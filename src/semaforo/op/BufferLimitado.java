@@ -19,6 +19,9 @@ public class BufferLimitado {
 		inBuf = (inBuf + 1) % size;
 		mutex.V();
 		isEmpty.V(); // notifica a algún consumidor en espera
+		
+		MainWindow.setVerdeMutex();
+		MainWindow.setRojoMutex();
 	}
 	
 	public double fetch(){
@@ -29,6 +32,10 @@ public class BufferLimitado {
 		outBuf = (outBuf+1) % size;
 		mutex.V();
 		isFull.V(); // notifica a cualquier productor en espera
+		
+		MainWindow.setRojoMutex();
+		MainWindow.setVerdeMutex();
+		
 		return value;
 	}
 }

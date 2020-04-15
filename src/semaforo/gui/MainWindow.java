@@ -18,8 +18,10 @@ import semaforo.op.*;
 public class MainWindow {
 
 	protected Shell shell;
+	
 	int cantConsumir;
 	int cantProducir;
+	
 	int tiempoEnConsumir;
 	int tiempoEnProducir;
 	
@@ -75,6 +77,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
 				semaforoMutex.setImage(rojo);
 			}
 		});
@@ -84,6 +87,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
 				semaforoMutex.setImage(verde);
 			}
 		});
@@ -242,8 +246,8 @@ public class MainWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				BufferLimitado buffer = new BufferLimitado();
-				Productor productor = new Productor( buffer );
-				Consumidor consumidor = new Consumidor( buffer );
+//				Productor productor = new Productor( buffer );
+//				Consumidor consumidor = new Consumidor( buffer );
 			}
 		});
 		btnIniciar.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
