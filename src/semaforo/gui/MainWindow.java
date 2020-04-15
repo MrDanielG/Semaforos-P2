@@ -71,6 +71,7 @@ public class MainWindow {
 	 */
 	public void createContents() {
 		shell = new Shell();
+		shell.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		shell.setSize(632, 565);
 		shell.setText("Semaforo P2");
 		
@@ -103,20 +104,20 @@ public class MainWindow {
 		Label lineaProductor1 = new Label(shell, SWT.BORDER);
 		lineaProductor1.setBounds(567, 110, 24, 10);
 		
-		Label semaforoConsumidor = new Label(shell, SWT.BORDER);
-		semaforoConsumidor.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
-		semaforoConsumidor.setBounds(190, 69, 70, 111);
+		Label semaforoConsumidor = new Label(shell, SWT.NONE);
+		semaforoConsumidor.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		semaforoConsumidor.setBounds(182, 67, 80, 100);
 		
 		Label lblProducir = new Label(shell, SWT.NONE);
 		lblProducir.setBounds(376, 210, 70, 20);
 		lblProducir.setText("Producir:");
 		
-		semaforoProductor = new Label(shell, SWT.BORDER);
-		semaforoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
-		semaforoProductor.setBounds(350, 50, 78, 130);
+		semaforoProductor = new Label(shell, SWT.NONE);
+		semaforoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		semaforoProductor.setBounds(350, 67, 80, 100);
 		
-		Label semaforoMutex = new Label(shell, SWT.BORDER);
-		semaforoMutex.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+		Label semaforoMutex = new Label(shell, SWT.NONE);
+		semaforoMutex.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		semaforoMutex.setBounds(267, 397, 70, 111);
 		
 		Label lineaConsumidor3 = new Label(shell, SWT.BORDER);
@@ -188,7 +189,9 @@ public class MainWindow {
 		ProgressBar progressBar = new ProgressBar(shell, SWT.NONE);
 		progressBar.setBounds(60, 354, 505, 21);
 		
+		Label lblTiempoDeProuccin = new Label(shell, SWT.WRAP);
+		lblTiempoDeProuccin.setBounds(376, 275, 107, 49);
+		lblTiempoDeProuccin.setText("Tiempo de Proucci\u00F3n (ms):");
+		
 	}
-	
-
 }
