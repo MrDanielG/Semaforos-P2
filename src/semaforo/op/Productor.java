@@ -1,14 +1,15 @@
 package semaforo.op;
 
 import java.util.Random;
+
 public class Productor implements Runnable {
 
 	BufferLimitado b = null;
 	int tiempoEnProducir;
 	
-	public Productor( BufferLimitado initb ) {
+	public Productor( BufferLimitado initb, int tiempo ) {
 		b = initb;
-		//this.tiempoEnProducir = _tiempoEnProducir;
+		this.tiempoEnProducir = tiempo;
 		new Thread( this ).start();
 	}
 	

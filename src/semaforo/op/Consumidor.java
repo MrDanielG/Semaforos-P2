@@ -3,11 +3,11 @@ package semaforo.op;
 public class Consumidor implements Runnable {
 
 	BufferLimitado b = null;
-	int tiempoEnConsumir = 0;
+	int tiempoEnConsumir;
 	
-	public Consumidor( BufferLimitado initb ) {
+	public Consumidor( BufferLimitado initb, int _tiempoEnConsumir ) {
 		b = initb;
-		//this.tiempoEnConsumir = _tiempoEnConsumir;
+		this.tiempoEnConsumir = _tiempoEnConsumir;
 		new Thread( this ).start();
 	}
 	

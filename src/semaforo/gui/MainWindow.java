@@ -18,10 +18,8 @@ import semaforo.op.*;
 public class MainWindow {
 
 	protected Shell shell;
-	
 	int cantConsumir;
 	int cantProducir;
-	
 	int tiempoEnConsumir;
 	int tiempoEnProducir;
 	
@@ -246,8 +244,8 @@ public class MainWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				BufferLimitado buffer = new BufferLimitado();
-//				Productor productor = new Productor( buffer );
-//				Consumidor consumidor = new Consumidor( buffer );
+				Productor productor = new Productor( buffer, tiempoEnProducir );
+				Consumidor consumidor = new Consumidor( buffer, tiempoEnConsumir );
 			}
 		});
 		btnIniciar.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
@@ -263,7 +261,8 @@ public class MainWindow {
 		});
 		spinnerTiempoCons.setMaximum(10000);
 		spinnerTiempoCons.setMinimum(10);
-		spinnerTiempoCons.setBounds(168, 288, 59, 26);
+		spinnerTiempoCons.setBounds(168, 288, 70, 26);
+		spinnerTiempoCons.setSelection(2000);
 		
 		
 		Spinner spinnerTiempoProd = new Spinner(shell, SWT.BORDER);
@@ -275,7 +274,8 @@ public class MainWindow {
 		});
 		spinnerTiempoProd.setMaximum(10000);
 		spinnerTiempoProd.setMinimum(10);
-		spinnerTiempoProd.setBounds(506, 288, 59, 26);
+		spinnerTiempoProd.setBounds(489, 288, 76, 26);
+		spinnerTiempoProd.setSelection(2000);
 		
 		ProgressBar progressBar = new ProgressBar(shell, SWT.NONE);
 		progressBar.setBounds(60, 354, 505, 21);
