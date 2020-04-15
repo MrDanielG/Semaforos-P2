@@ -19,7 +19,6 @@ public class BufferLimitado {
 		inBuf = (inBuf + 1) % size;
 		mutex.V();
 		isEmpty.V(); // notifica a algún consumidor en espera
-		MainWindow.setText();
 	}
 	
 	public double fetch(){

@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
@@ -25,10 +26,24 @@ public class MainWindow {
 	static Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
 	static ImageData dataRojo = rojo.getImageData();
 	
-	Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
+	static Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
 	ImageData dataVerde = rojo.getImageData();
+	
+	static Color red = new Color (Display.getCurrent(), 255, 0, 0);
+	static Color green = new Color (Display.getCurrent(), 0, 255, 0);
 
 	static Label semaforoProductor;
+	static Label semaforoMutex;
+	static Label semaforoConsumidor;
+	
+	static Label lineaConsumidor1;
+	static Label lineaConsumidor2;
+	static Label lineaConsumidor3;
+	
+	static Label lineaProductor1;
+	static Label lineaProductor2;
+	static Label lineaProductor3;
+	
 	/**
 	 * Launch the application.
 	 * @param args
@@ -56,12 +71,84 @@ public class MainWindow {
 			}
 		}
 	}
+	public static void setRojoMutex() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				semaforoMutex.setImage(rojo);
+			}
+		});
+	}
 	
-	public static void setText() {
+	public static void setVerdeMutex() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				semaforoMutex.setImage(verde);
+			}
+		});
+	}
+	
+	public static void setRojoSP() {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
 				semaforoProductor.setImage(rojo);
+				semaforoConsumidor.setImage(verde);
+			}
+		});
+	}
+	
+	public static void setRojoSC() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				semaforoConsumidor.setImage(rojo);
+				semaforoProductor.setImage(verde);
+			}
+		});
+	}
+	
+	public static void setCableConsRojo() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				lineaConsumidor1.setBackground(red);
+				lineaConsumidor2.setBackground(red);
+				lineaConsumidor3.setBackground(red);
+			}
+		});
+	}
+	
+	public static void setCableConsVerde() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				lineaConsumidor1.setBackground(green);
+				lineaConsumidor2.setBackground(green);
+				lineaConsumidor3.setBackground(green);
+			}
+		});
+	}
+	
+	public static void setCableProdRojo() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				lineaProductor1.setBackground(red);
+				lineaProductor2.setBackground(red);
+				lineaProductor3.setBackground(red);
+			}
+		});
+	}
+	
+	public static void setCableProdVerde() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				lineaProductor1.setBackground(green);
+				lineaProductor2.setBackground(green);
+				lineaProductor3.setBackground(green);
 			}
 		});
 	}
@@ -92,19 +179,25 @@ public class MainWindow {
 		lblNewLabel.setBounds(47, 50, 129, 130);
 		lblNewLabel.setText("Proceso Consumidor");
 		
-		Label lineaConsumidor2 = new Label(shell, SWT.BORDER);
-		lineaConsumidor2.setBounds(21, 110, 9, 363);
-		
-		Label lineaProductor2 = new Label(shell, SWT.BORDER);
-		lineaProductor2.setBounds(582, 110, 9, 363);
-		
-		Label lineaConsumidor1 = new Label(shell, SWT.BORDER);
+		lineaConsumidor1 = new Label(shell, SWT.BORDER);
 		lineaConsumidor1.setBounds(21, 110, 24, 10);
 		
-		Label lineaProductor1 = new Label(shell, SWT.BORDER);
+		lineaProductor1 = new Label(shell, SWT.BORDER);
 		lineaProductor1.setBounds(567, 110, 24, 10);
 		
-		Label semaforoConsumidor = new Label(shell, SWT.NONE);
+		lineaConsumidor2 = new Label(shell, SWT.BORDER);
+		lineaConsumidor2.setBounds(21, 110, 9, 363);
+		
+		lineaProductor2 = new Label(shell, SWT.BORDER);
+		lineaProductor2.setBounds(582, 110, 9, 363);
+		
+		lineaConsumidor3 = new Label(shell, SWT.BORDER);
+		lineaConsumidor3.setBounds(21, 463, 266, 10);
+		
+		lineaProductor3 = new Label(shell, SWT.BORDER);
+		lineaProductor3.setBounds(325, 463, 266, 10);
+		
+		semaforoConsumidor = new Label(shell, SWT.NONE);
 		semaforoConsumidor.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		semaforoConsumidor.setBounds(182, 67, 80, 100);
 		
@@ -116,15 +209,9 @@ public class MainWindow {
 		semaforoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		semaforoProductor.setBounds(350, 67, 80, 100);
 		
-		Label semaforoMutex = new Label(shell, SWT.NONE);
+		semaforoMutex = new Label(shell, SWT.NONE);
 		semaforoMutex.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		semaforoMutex.setBounds(267, 397, 70, 111);
-		
-		Label lineaConsumidor3 = new Label(shell, SWT.BORDER);
-		lineaConsumidor3.setBounds(21, 463, 266, 10);
-		
-		Label lineaProductor3 = new Label(shell, SWT.BORDER);
-		lineaProductor3.setBounds(325, 463, 266, 10);
 		
 		Label lblTiempoDeConsumo = new Label(shell, SWT.WRAP);
 		lblTiempoDeConsumo.setText("Tiempo de Consumo (ms):");
