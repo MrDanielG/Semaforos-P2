@@ -164,6 +164,10 @@ public class MainWindow {
 		shell.setSize(632, 565);
 		shell.setText("Semaforo P2");
 		
+		semaforoMutex = new Label(shell, SWT.NONE);
+		semaforoMutex.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		semaforoMutex.setBounds(267, 397, 70, 111);
+		
 		Label lblProcesoConsumidor = new Label(shell, SWT.NONE);
 		lblProcesoConsumidor.setBounds(60, 210, 70, 20);
 		lblProcesoConsumidor.setText("Consumir:");
@@ -181,22 +185,22 @@ public class MainWindow {
 		lblNewLabel.setBounds(47, 50, 129, 130);
 		lblNewLabel.setText("Proceso Consumidor");
 		
-		lineaConsumidor1 = new Label(shell, SWT.BORDER);
+		lineaConsumidor1 = new Label(shell, SWT.NONE);
 		lineaConsumidor1.setBounds(21, 110, 24, 10);
 		
-		lineaProductor1 = new Label(shell, SWT.BORDER);
+		lineaProductor1 = new Label(shell, SWT.NONE);
 		lineaProductor1.setBounds(567, 110, 24, 10);
 		
-		lineaConsumidor2 = new Label(shell, SWT.BORDER);
+		lineaConsumidor2 = new Label(shell, SWT.NONE);
 		lineaConsumidor2.setBounds(21, 110, 9, 363);
 		
-		lineaProductor2 = new Label(shell, SWT.BORDER);
+		lineaProductor2 = new Label(shell, SWT.NONE);
 		lineaProductor2.setBounds(582, 110, 9, 363);
 		
-		lineaConsumidor3 = new Label(shell, SWT.BORDER);
+		lineaConsumidor3 = new Label(shell, SWT.NONE);
 		lineaConsumidor3.setBounds(21, 463, 266, 10);
 		
-		lineaProductor3 = new Label(shell, SWT.BORDER);
+		lineaProductor3 = new Label(shell, SWT.NONE);
 		lineaProductor3.setBounds(325, 463, 266, 10);
 		
 		semaforoConsumidor = new Label(shell, SWT.NONE);
@@ -210,10 +214,6 @@ public class MainWindow {
 		semaforoProductor = new Label(shell, SWT.NONE);
 		semaforoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		semaforoProductor.setBounds(350, 67, 80, 100);
-		
-		semaforoMutex = new Label(shell, SWT.NONE);
-		semaforoMutex.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
-		semaforoMutex.setBounds(267, 397, 70, 111);
 		
 		Label lblTiempoDeConsumo = new Label(shell, SWT.WRAP);
 		lblTiempoDeConsumo.setText("Tiempo de Consumo (ms):");
