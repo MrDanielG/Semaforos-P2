@@ -18,8 +18,8 @@ import semaforo.op.*;
 public class MainWindow {
 
 	protected Shell shell;
-	int cantConsumir;
-	int cantProducir;
+	int cantConsumir = 1;
+	int cantProducir = 1;
 	int tiempoEnConsumir = 2000;
 	int tiempoEnProducir = 2000;
 	
@@ -253,8 +253,8 @@ public class MainWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				BufferLimitado buffer = new BufferLimitado();
-				Productor productor = new Productor( buffer, tiempoEnProducir );
-				Consumidor consumidor = new Consumidor( buffer, tiempoEnConsumir );
+				Productor productor = new Productor( buffer, tiempoEnProducir, cantProducir );
+				Consumidor consumidor = new Consumidor( buffer, tiempoEnConsumir, cantConsumir );
 			}
 		});
 		btnIniciar.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
