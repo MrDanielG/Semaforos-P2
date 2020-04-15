@@ -2,6 +2,8 @@ package semaforo.op;
 
 import java.util.Random;
 
+import semaforo.gui.MainWindow;
+
 public class Productor implements Runnable {
 
 	BufferLimitado b = null;
@@ -20,7 +22,8 @@ public class Productor implements Runnable {
 			item = r.nextDouble();
 			System.out.println( "Artículo producido " + item );
 			b.deposit( item );
-			Util.mySleep(2000);
+			MainWindow.setRojoSP();
+			Util.mySleep(tiempoEnProducir);
 		}
 	}
 

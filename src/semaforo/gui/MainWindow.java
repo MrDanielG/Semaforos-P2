@@ -20,14 +20,14 @@ public class MainWindow {
 	protected Shell shell;
 	int cantConsumir;
 	int cantProducir;
-	int tiempoEnConsumir;
-	int tiempoEnProducir;
+	int tiempoEnConsumir = 2000;
+	int tiempoEnProducir = 2000;
 	
-	static Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
-	static ImageData dataRojo = rojo.getImageData();
-	
-	static Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
-	ImageData dataVerde = rojo.getImageData();
+//	static Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
+//	static ImageData dataRojo = rojo.getImageData();
+//	
+//	static Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
+//	ImageData dataVerde = rojo.getImageData();
 	
 	static Color red = new Color (Display.getCurrent(), 255, 0, 0);
 	static Color green = new Color (Display.getCurrent(), 0, 255, 0);
@@ -95,16 +95,21 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
+				Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
 				semaforoProductor.setImage(rojo);
 				semaforoConsumidor.setImage(verde);
 			}
 		});
 	}
 	
+	
 	public static void setRojoSC() {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Image verde = new Image(Display.getCurrent(), "semaforoVerde.png");
+				Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
 				semaforoConsumidor.setImage(rojo);
 				semaforoProductor.setImage(verde);
 			}
@@ -115,6 +120,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Color red = new Color (Display.getCurrent(), 255, 0, 0);
 				lineaConsumidor1.setBackground(red);
 				lineaConsumidor2.setBackground(red);
 				lineaConsumidor3.setBackground(red);
@@ -126,6 +132,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Color green = new Color (Display.getCurrent(), 0, 255, 0);
 				lineaConsumidor1.setBackground(green);
 				lineaConsumidor2.setBackground(green);
 				lineaConsumidor3.setBackground(green);
@@ -137,6 +144,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Color red = new Color (Display.getCurrent(), 255, 0, 0);
 				lineaProductor1.setBackground(red);
 				lineaProductor2.setBackground(red);
 				lineaProductor3.setBackground(red);
@@ -148,6 +156,7 @@ public class MainWindow {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				Color green = new Color (Display.getCurrent(), 0, 255, 0);
 				lineaProductor1.setBackground(green);
 				lineaProductor2.setBackground(green);
 				lineaProductor3.setBackground(green);

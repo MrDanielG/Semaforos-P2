@@ -1,5 +1,7 @@
 package semaforo.op;
 
+import semaforo.gui.MainWindow;
+
 public class Consumidor implements Runnable {
 
 	BufferLimitado b = null;
@@ -16,7 +18,8 @@ public class Consumidor implements Runnable {
 		while( true ) {	
 			item = b.fetch();
 			System.out.println( "Artículo extraído " + item );
-			Util.mySleep(2000);
+			MainWindow.setRojoSC();
+			Util.mySleep(tiempoEnConsumir);
 		}
 	}
 }

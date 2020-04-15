@@ -15,27 +15,29 @@ public class BufferLimitado {
 	public void deposit( double value ) {
 		isFull.P(); // espera si el buffer está lleno
 		mutex.P(); // asegura la exclusión mutua
+		MainWindow.setRojoMutex();
+		MainWindow.setCableConsRojo();
 		buffer[inBuf] = value;
 		inBuf = (inBuf + 1) % size;
 		mutex.V();
+		MainWindow.setCableConsVerde();
+		MainWindow.setVerdeMutex();	
 		isEmpty.V(); // notifica a algún consumidor en espera
-		
-		MainWindow.setVerdeMutex();
-		MainWindow.setRojoMutex();
 	}
 	
 	public double fetch(){
 		double value;
 		isEmpty.P(); // esperar si el buffer está vacío
 		mutex.P(); // asegura la exclusión mutua
+		MainWindow.setRojoMutex();
+		MainWindow.setCableProdRojo();
 		value = buffer[outBuf]; // lee desde el buffer
 		outBuf = (outBuf+1) % size;
 		mutex.V();
+		MainWindow.setCableProdVerde();
+		MainWindow.setVerdeMutex();	
 		isFull.V(); // notifica a cualquier productor en espera
-		
-		MainWindow.setRojoMutex();
-		MainWindow.setVerdeMutex();
-		
+	
 		return value;
 	}
 }
