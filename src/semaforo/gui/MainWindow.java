@@ -22,7 +22,7 @@ public class MainWindow {
 	int cantProducir = 1;
 	int tiempoEnConsumir = 2000;
 	int tiempoEnProducir = 2000;
-	
+	static int count = 0;
 //	static Image rojo = new Image(Display.getCurrent(), "semaforoRojo.png");
 //	static ImageData dataRojo = rojo.getImageData();
 //	
@@ -43,6 +43,8 @@ public class MainWindow {
 	static Label lineaProductor1;
 	static Label lineaProductor2;
 	static Label lineaProductor3;
+	
+	static ProgressBar progressBar;
 	
 	/**
 	 * Launch the application.
@@ -71,6 +73,7 @@ public class MainWindow {
 			}
 		}
 	}
+	
 	public static void setRojoMutex() {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
@@ -102,7 +105,6 @@ public class MainWindow {
 			}
 		});
 	}
-	
 	
 	public static void setRojoSC() {
 		Display.getDefault().asyncExec(new Runnable() {
@@ -163,6 +165,15 @@ public class MainWindow {
 			}
 		});
 	}
+	
+	public static void updateBarra(int cont) {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				progressBar.setSelection(cont*10);
+			}
+		});
+	}
 
 	/**
 	 * Create contents of the window.
@@ -181,16 +192,17 @@ public class MainWindow {
 		lblProcesoConsumidor.setBounds(60, 210, 70, 20);
 		lblProcesoConsumidor.setText("Consumir:");
 		
-		Label lblProcesoProductor = new Label(shell, SWT.BORDER | SWT.CENTER);
+		Label lblProcesoProductor = new Label(shell, SWT.CENTER);
+		lblProcesoProductor.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblProcesoProductor.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
-		lblProcesoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		lblProcesoProductor.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_BLUE));
 		lblProcesoProductor.setBounds(436, 50, 129, 130);
 		lblProcesoProductor.setText("Proceso Productor");
 		
-		Label lblNewLabel = new Label(shell, SWT.BORDER | SWT.HORIZONTAL | SWT.CENTER);
+		Label lblNewLabel = new Label(shell, SWT.HORIZONTAL | SWT.CENTER);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
-		lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_INFO_BACKGROUND));
-		lblNewLabel.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION));
+		lblNewLabel.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblNewLabel.setBounds(47, 50, 129, 130);
 		lblNewLabel.setText("Proceso Consumidor");
 		
@@ -286,7 +298,7 @@ public class MainWindow {
 		spinnerTiempoProd.setBounds(489, 288, 76, 26);
 		spinnerTiempoProd.setSelection(2000);
 		
-		ProgressBar progressBar = new ProgressBar(shell, SWT.NONE);
+		progressBar = new ProgressBar(shell, SWT.NONE);
 		progressBar.setBounds(60, 354, 505, 21);
 		
 		Label lblTiempoDeProuccin = new Label(shell, SWT.WRAP);
